@@ -1,0 +1,35 @@
+/* Layout
+===================================================== */
+
+body{
+    padding-top: 120px;
+    background-color: #2b669a;
+}
+
+#cont1{
+    max-width: 1060px;
+}
+#cont2{
+    max-width: 1000px;
+    padding-left: 200px;
+    padding-right: 200px;
+}
+
+/* Navbar
+=====================================================*/
+.navbar-text {
+    font-weight: bold;
+    padding-top: 9px;
+}
+
+#navpills{
+    padding-top: 4px;
+}
+
+/* Jumbotron
+===================================================== */
+.jumbotron{
+    text-align: center;
+    max-width: 600px;
+
+}
