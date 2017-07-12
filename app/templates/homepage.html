@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}Home{%endblock%}</title>
+    <meta charset="UTF-8">
+    <link href="../static/css/bootstrap.css" rel="stylesheet" media="screen">
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="../static/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
+    <link href="../static/css/Homepage_styles.css" rel="stylesheet" media="screen">
+</head>
+<body>
+<!--Navbar-->
+<nav class="nav navbar-inverse navbar-fixed-top">
+    <div id="cont1" class="container">
+        <div class="navbar-header">
+            <a id="top  " href="#" class="navbar-brand text-muted">BUCKET LIST</a>
+        </div>
+
+        <div class="collapse navbar-collapse" data-toggle="navbar-collapse" data-target="#navbar-collapse">
+            <ul class="nav nav-pills navbar-right" id="navpills">
+                <li class="active" role="presentation"><a href="/">Home</a></li>
+                <li role="presentation"><a href="/signin">Sign in</a></li>
+                <li role="presentation"><a href="/signup">Sign Up</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--End Navbar-->
+{% block body %}
+<div id="cont2" class="container">
+    <!--Jumbotron-->
+    <div class=" row jumbotron bg-success">
+        <div class="lead">
+        <h1>Keep track of your goals</h1><br>
+        </div>
+        <div class="col-sm-4">
+            <b class="glyphicon glyphicon-list-alt"></b><br>
+            <h2>Record and organize your goals</h2>
+            <p>This app will help you prioritize your goals</p>
+        </div>
+        <div class="col-sm-4">
+            <b class="glyphicon glyphicon-share glyphicon-home"></b><br>
+            <h2>Share your wish lists</h2>
+            <p>You can share your goals and wishes with people all over the world</p>
+        </div>
+        <div class="col-sm-4">
+            <b class="glyphicon glyphicon-edit glyphicon-home"></b><br>
+            <h2>Create, Update and Delete goal lists</h2>
+            <p>You will be able to create and update your lists as you wish</p>
+        </div>
+         <a class="btn btn-success btn-lg" href="/signup">Create an account now</a>
+    </div>
+    <!--End Jumbotron-->
+{% endblock %}
+<nav id="bottom" class="nav navbar-inverse navbar-fixed-bottom">
+    <div class="navbar-footer">
+        <p class="navbar-text">&copy; 2017 BUCKET LIST All rights reserved - Aisha .</p>
+    </div>
+</nav>
+</div>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+</body>
+</html>
