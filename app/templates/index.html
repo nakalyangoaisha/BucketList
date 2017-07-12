@@ -27,21 +27,23 @@
 <!--End Navbar-->
 
 <div class="container">
+
+<!--Bucketlists page-->
     <div class="page-header">
         <h1 id="heading" class="text-center">Welcome {{ user }}</h1>
     </div>
 
     <div class="">
-        <button type="button" class="btn btn-primary text-center" href="/addbucketlist">Add bucketlist</button>
+        <a type="button" class="btn btn-primary text-center" href="/addbucketlist">Add bucketlist</a>
     </div>
     <div class="list-group">
          {% if bucketlist %}
-             <a class="" href="/additem" >{{ bucketlist.title }}</a>
+             <a class="" href="/additems" >{{ bucketlist.title }}</a>
             {% endif %}
     </div>
+<!--End Bucketlists page-->
+
 </div>
-
-
 <script src="http://code.jquery.com/jquery.js"></script>
 <script src="../static/js/bootstrap.min.js"></script>
 </body>
