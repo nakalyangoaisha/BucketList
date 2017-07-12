@@ -44,8 +44,10 @@
                 <input type="password" class="form-control" placeholder="Confirm Password" name="confirmpassword" required>
 
             </div>
-             {% if error %}
-                <p style="color: red;"> {{error}} </p>
+             {% if error1 %}
+                <p style="color: red;"> {{ error1 }} </p>
+             {% elif error2 %}
+                <p style="color: red;"> {{ error2 }} </p>
             {% endif %}
              <div class="form-group">
                  <input type="submit" value="Sign Up" class="btn btn-success">
