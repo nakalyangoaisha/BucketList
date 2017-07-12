@@ -29,13 +29,11 @@
 <div class="container">
 
 <!--Bucketlists page-->
-    <div class="page-header">
-        <h1 id="heading" class="text-center">Welcome, {{ username }}</h1>
-    </div>
+<div class="row jumbotron text-center">
+    <h2 id="heading" class="pull-left">Welcome, {{ username }}</h2>
+    <a type="button" class="btn btn-primary btn-lg pull-right" href="/additems">Add bucketlist</a>
+</div>
 
-    <div class="">
-        <a type="button" class="btn btn-primary btn-lg text-center" href="/additems">Add bucketlist</a>
-    </div>
     <div class="list-group">
          {% if bucketlist %}
              <a class="" href="/additems" >{{ bucketlist.title }}</a>
