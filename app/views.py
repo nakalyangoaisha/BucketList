@@ -36,7 +36,7 @@ def signin():
         data1 = request.form['username']
         data2 = request.form['password']
         if application.validate_on_signin(data1, data2):
-            return redirect(url_for('index'))
+            return redirect(url_for('index', user=data1))
         error = 'Invalid Username/Password'
     return render_template('Sign_in.html', form=form, error=error)
 
@@ -53,14 +53,41 @@ def addbucketlist():
         data = request.form['title']
         bucketlist.add_bucketlist(data)
         return redirect(url_for('additem', form=form, title=data))
+    return render_template('Add-bucketlist.html', form=form)
 
 
-@app.route('/additems', methods=['GET', 'POST'])
-def additem():
+@app.route('/additems/<title>', methods=['GET', 'POST'])
+def additem(title):
     form = request.form
+    if request.method == 'POST':
+        item = request.form['item']
+        bucketlist.add_items(title, item)
+        return redirect(url_for('additem', form=form, title=title))
+    return render_template('Add-bucketlist.html', form=form)
 
-# @app.route('/logout')
-# def logout():
-#     # remove the username from the session if it's there
-#     # logout_user()
-#     return redirect(url_for('Sign_in.html'))
+
+@app.route('/edittitle/<title>', methods=['GET', 'POST'])
+def edit_title(title):
+    form = request.form
+    if request.method == 'POST':
+        new_title = form['new_title']
+        bucketlist.edit_title(title, new_title)
+        return redirect(url_for('additem'))
+    return redirect(url_for('additem'))
+
+
+# @app.route('/edititem/<item>', methods=['GET', 'POST'])
+# def edit_item(item):
+#     form = request.form
+#     if request.method == 'POST':
+#         new_item = form['new_item']
+#         bucketlist.edit_items(item, new_item)
+#         return redirect(url_for('additem'))
+
+
+
+@app.route('/logout')
+def logout():
+    # remove the username from the session if it's there
+    # logout_user()
+    return redirect(url_for('Sign_in.html'))
