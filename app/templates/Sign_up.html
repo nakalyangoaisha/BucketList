@@ -30,8 +30,9 @@
 <div id="cont2" class="container">
     <div class="row jumbotron">
         <div class="lead">
-            <h2>Create an account</h2>
+            <h2 style="color: black">Create an account</h2>
         </div>
+
          <form action="{{ url_for('signup') }}" class="form-horizontal" method="POST" name="signup">
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="Username" name="username" required><br>
@@ -41,6 +42,7 @@
             </div>
             <div class="form-group">
                 <input type="password" class="form-control" placeholder="Confirm Password" name="confirmpassword" required>
+
             </div>
              {% if error %}
                 <p style="color: red;"> {{error}} </p>
@@ -55,7 +57,7 @@
     </div>
 </div>
 <!--End Sign Up Jumbotron-->
-{% endblock %}
 
+{% endblock %}
 </body>
 </html>
