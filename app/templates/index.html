@@ -6,7 +6,7 @@
     <link href="../static/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="../static/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
     <link href="../static/css/index.css" rel="stylesheet" media="screen">
-    {% block title %}Add List{% endblock %}
+    <title>{% block title %}Add List{% endblock %}</title>
 </head>
 <body>
 
@@ -30,7 +30,7 @@
 
 <!--Bucketlists page-->
     <div class="page-header">
-        <h1 id="heading" class="text-center">Welcome {{ user }}</h1>
+        <h1 id="heading" class="text-center">Welcome, {{ data1 }}</h1>
     </div>
 
     <div class="">
@@ -42,7 +42,8 @@
             {% endif %}
     </div>
 <!--End Bucketlists page-->
-
+{% block body %}
+{% endblock %}
 </div>
 <script src="http://code.jquery.com/jquery.js"></script>
 <script src="../static/js/bootstrap.min.js"></script>
