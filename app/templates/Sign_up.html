@@ -32,22 +32,25 @@
         <div class="lead">
             <h2 style="color: black">Create an account</h2>
         </div>
-         <form action="{{ url_for("homepage") }}" class="form-horizontal" method="POST" name="signup">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Username" required><br>
-            </div>
-            <div class="form-group">
-                <input type="password" class="form-control" placeholder="Password" name="username" required>
-            </div>
-            <div class="form-group">
-                <input type="password" class="form-control" placeholder="Confirm Password" name="password" required>
-            </div>
-             {% if error %}
-                 <p style="color: red;"> {{error}} </p>
-             {% endif %}
 
+         <form action="{{ url_for('signup') }}" class="form-horizontal" method="POST" name="signup">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Username" name="username" required><br>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Password" name="password" required>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Confirm Password" name="confirmpassword" required>
+
+            </div>
+             {% if error1 %}
+                <p style="color: red;"> {{ error1 }} </p>
+             {% elif error2 %}
+                <p style="color: red;"> {{ error2 }} </p>
+            {% endif %}
              <div class="form-group">
-                 <input type="submit" value="Sign Up" class="btn btn-success" href="">
+                 <input type="submit" value="Sign Up" class="btn btn-success">
              </div>
          </form>
         <div>

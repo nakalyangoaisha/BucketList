@@ -5,8 +5,8 @@
     <link href="../static/css/bootstrap.css" rel="stylesheet" media="screen">
     <link href="../static/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="../static/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
-    <link href="../static/css/Lists.css" rel="stylesheet" media="screen">
-    <title>{% Add List%}</title>
+    <link href="../static/css/index.css" rel="stylesheet" media="screen">
+    <title>{% block title %}Add List{% endblock %}</title>
 </head>
 <body>
 
@@ -27,19 +27,24 @@
 <!--End Navbar-->
 
 <div class="container">
+
+<!--Bucketlists page-->
     <div class="page-header">
-        <h1 id="heading" class="text-center">Welcome {{ user.username }}</h1>
+        <h1 id="heading" class="text-center">Welcome, {{ username }}</h1>
     </div>
 
     <div class="">
-        <button type="button" class="btn btn-primary text-center" href="Add-bucketlist.html">Add bucketlist</button>
+        <a type="button" class="btn btn-primary btn-lg text-center" href="/additems">Add bucketlist</a>
     </div>
     <div class="list-group">
-
+         {% if bucketlist %}
+             <a class="" href="/additems" >{{ bucketlist.title }}</a>
+            {% endif %}
     </div>
+<!--End Bucketlists page-->
+{% block body %}
+{% endblock %}
 </div>
-
-
 <script src="http://code.jquery.com/jquery.js"></script>
 <script src="../static/js/bootstrap.min.js"></script>
 </body>

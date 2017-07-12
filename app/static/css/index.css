@@ -22,25 +22,6 @@ body{
     padding-top: 4px;
 }
 
-/* Modal
-=====================================================*/
-.modal-body{
-    height: 435px;
-}
-.modal-dialog {
-    width: 600px;
-    height: 1000px;
-}
-#sizing-addon{
-    size: 20px;
-}
-
-/* Table
-=====================================================*/
-.bucket_lists-table{
-    background-color: #222222;
-}
-
 /* Logos and icons
 ===================================================== */
 /* Glyphicon
