@@ -2,8 +2,8 @@ from .models import User
 
 
 class App:
-    def __init__(self):
-        self.users = {}
+
+    users = {}
 
     def validate_on_signup(self, username, password):
         user = User(username, password)
