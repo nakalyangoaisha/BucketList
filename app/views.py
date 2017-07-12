@@ -38,11 +38,7 @@ def signin():
         error = 'Invalid Username/Password'
     return render_template('Sign_in.html', form=form, error=error)
 
-# @app.route('/lists', methods=['GET', 'POST'])
-# def lists():
-#     return render_template("Lists.html")
-#
-#
+
 # @app.route('/logout')
 # def logout():
 #     # remove the username from the session if it's there
