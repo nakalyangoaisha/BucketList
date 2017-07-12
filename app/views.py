@@ -22,7 +22,7 @@ def signup():
         data2 = request.form['password']
         if application.validate_on_signup(data1, data2):
             if request.form['confirmpassword'] == data2:
-                return redirect(url_for('index', user=data1))
+                return redirect(url_for('index', data1=data1))
             error2 = 'Passwords do not match'
         error1 = 'User already exists'
     return render_template('Sign_up.html', form=form, error1=error1, error2=error2)
@@ -36,14 +36,14 @@ def signin():
         data1 = request.form['username']
         data2 = request.form['password']
         if application.validate_on_signin(data1, data2):
-            return redirect(url_for('index', user=data1))
+            return redirect(url_for('index', data1=data1))
         error = 'Invalid Username/Password'
     return render_template('Sign_in.html', form=form, error=error)
 
 
-@app.route('/index', methods=['POST', 'GET'])
-def index():
-    return render_template('index.html')
+@app.route('/index/<data1>', methods=['POST', 'GET'])
+def index(data1):
+    return render_template('index.html', data1=data1)
 
 
 @app.route('/addbucketlist', methods=['POST', 'GET'])
