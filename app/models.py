@@ -7,9 +7,7 @@ class User(object):
 
 class BucketList(object):
 
-    def __init__(self):
-
-        self.bucketlists = {}
+    bucketlists = {}
 
     def additems(self, title, item):
         if title in self.bucketlists.keys():
