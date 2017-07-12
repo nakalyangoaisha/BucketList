@@ -1,0 +1,53 @@
+body{
+    padding-top: 80px;
+    background-color: #2b669a;
+}
+
+.container{
+    max-width: 1100px;
+}
+
+/* Navbar
+=====================================================*/
+.navbar-text {
+    font-weight: bold;
+    padding-top: 9px;
+}
+
+#heading{
+    padding-bottom: 40px;
+}
+
+.nav-pills{
+    padding-top: 4px;
+}
+
+/* Modal
+=====================================================*/
+.modal-body{
+    height: 435px;
+}
+.modal-dialog {
+    width: 600px;
+    height: 1000px;
+}
+#sizing-addon{
+    size: 20px;
+}
+
+/* Table
+=====================================================*/
+.bucket_lists-table{
+    background-color: #222222;
+}
+
+/* Logos and icons
+===================================================== */
+/* Glyphicon
+========================================== */
+.glyphicon{
+    font-size: 3em;
+    display: block;
+    text-align: center;
+    color: #337ab7;
+}
