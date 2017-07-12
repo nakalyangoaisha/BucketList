@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% Extends "Lists.html" %}
+    {% extends "index.html" %}
     <meta charset="UTF-8">
     <title>{% block title %}Add Item{%endblock%}</title>
     {% block body%}
@@ -12,11 +12,16 @@
 
   <!--Add bucketlist items panel-->
       <div class="panel panel-default">
-      <form action="{{ url_for('additem') }}" class="form-group" method="post">
+      <form action="{{ url_for('additems') }}" class="form-group" method="post">
            <div class="panel-heading">
-               <h3 class="panel-title text-center">
+               <div class="form-group">
+                   <input type="text" class="form-control" placeholder="Title" name="title" required><br>
+               </div>
+               <h3 class="panel-heading text-center">
                    {% if title %}
                       {{ title }}
+                   {% elif error %}
+                       {{ error }}
                    {% endif %}
                </h3>
                <a><i class="glyphicon glyphicon-edit pull-right" data-toggle="modal"
@@ -34,15 +39,15 @@
                        <label>
                            <input type="text" name="item">
                        </label>
-                       <a href="{{ url_for() }}"><i class="glyphicon glyphicon-edit pull-right" data-toggle="modal" data-target="#itemmodal"></i></a>
-                       <a href="#"><i class="glyphicon glyphicon-trash pull-right"></i></a>
+                       <a href="#"><i class="glyphicon glyphicon-pencil pull-right" data-toggle="modal" data-target="#itemmodal"></i></a>
+                       <a href="/deleteitem"><i class="glyphicon glyphicon-trash pull-right"></i></a>
                    </li>
                    {% endfor %}
                    {% endif %}
                </ul>
            </div>
            <div class="panel-footer">
-               <a type="button" class="btn btn-primary text-center" href="/additem">Add item</a>
+               <a type="button" class="btn btn-primary text-center" href="/additems">Add item</a>
            </div>
       </form>
       </div>
@@ -64,7 +69,7 @@
                                </label>
                           </div>
                           <div class="modal-footer form-group">
-                               <button type="submit" class="btn btn-primary" href="">Save changes</button>
+                               <button type="submit" class="btn btn-primary">Save changes</button>
                           </div>
                      </form>
                 </div>
