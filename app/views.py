@@ -11,7 +11,7 @@ def homepage():
 
 
 @app.route('/signup', methods=['GET', 'POST'])
-def Sign_up():
+def signup():
     form = request.form
     error1 = None
     error2 = None
