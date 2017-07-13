@@ -9,97 +9,47 @@
 </head>
 <body>
   <div class="container">
-
-  <!--Add bucketlist items panel-->
-      <div class="panel panel-default">
-      <form action="{{ url_for('additems') }}" class="form-group" method="post">
-           <div class="panel-heading">
-               <div class="form-group">
-                   <input type="text" class="form-control" placeholder="Title" name="title" required><br>
-               </div>
-               <h3 class="panel-heading text-center">
+      <!--Add bucketlist items panel-->
+       <div class="panel panel-default">
+           <div class="row panel-heading">
+               <div class="col-sm-8 form-group">
                    {% if title %}
-                      {{ title }}
-                   {% elif error %}
-                       {{ error }}
+                        {{ title }}
+                       <a href="{{ url_for('edit_title', title=title) }}"><i class="glyphicon glyphicon-pencil pull-right"></i></a>
+                       <a href="{{ url_for('deletelist', title=title) }}"><i class="glyphicon glyphicon-trash pull-right"></i></a>
                    {% endif %}
-               </h3>
-               <a><i class="glyphicon glyphicon-edit pull-right" data-toggle="modal"
-                                        data-target="#titlemodal"></i></a>
-               <a href="/deletelist"><i class="glyphicon glyphicon-trash pull-right"></i></a>
+               </div>
            </div>
+
            <div class="panel-body">
-               <ul class="list-group">
-                   {% if bucketlists %}
+               {% if title in bucketlists.keys() %}
                    {% for item in bucketlists.values() %}
-                   <li class="list-group-item">
-                       <label>
-                           <input type="checkbox" class="pull-left">
-                       </label>
-                       <label>
-                           <input type="text" name="item">
-                       </label>
-                       <a href="#"><i class="glyphicon glyphicon-pencil pull-right" data-toggle="modal" data-target="#itemmodal"></i></a>
-                       <a href="/deleteitem"><i class="glyphicon glyphicon-trash pull-right"></i></a>
-                   </li>
+                       {{ item }}
+                       <a href="{{ url_for('edit_item') }}"><i class="glyphicon glyphicon-pencil pull-right"></i></a>
+                       <a href="{{ url_for('deleteitem') }}"><i class="glyphicon glyphicon-trash pull-right"></i></a>
                    {% endfor %}
-                   {% endif %}
-               </ul>
+
+                   <form action="{{ url_for('additems') }}" class="form-group" method="post">
+                       <ul class="list-group">
+                           <li class="list-group-item">
+                               <label>
+                                   <input type="checkbox" class="pull-left">
+                               </label>
+                               <label>
+                                   <input type="text" class="form-control" placeholder="Item" name="item" required><br>
+                               </label>
+                           </li>
+                       </ul>
+                   </form>
+               {% endif %}
+
            </div>
            <div class="panel-footer">
-               <a type="button" class="btn btn-primary text-center" href="/additems">Add item</a>
+               <a type="button" class="btn btn-primary text-center" href="{{ url_for('additem', title=title) }}">Add item</a>
            </div>
-      </form>
+           </div>
       </div>
   <!--Add bucketlist items panel-->
-
-      <!--Edit title modal-->
-       <div id="titlemodal" class="modal fade" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                     <form action="{{ url_for('edit_title') }}" class="form-control" method="post">
-                          <div class="modal-header form-group">
-                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                   <span aria-hidden="true">&times;</span>
-                               </button>
-                          </div>
-                          <div class="modal-body form-group">
-                               <label>
-                                   <input type="text" name="new_title">
-                               </label>
-                          </div>
-                          <div class="modal-footer form-group">
-                               <button type="submit" class="btn btn-primary">Save changes</button>
-                          </div>
-                     </form>
-                </div>
-           </div>
-       </div>
-     <!--Edit title modal-->
-
-     <!--Edit item modal-->
-       <div id="itemmodal" class="modal fade" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                     <form action="{{ url_for('edit_item') }}" class="form-control" method="post">
-                          <div class="modal-header form-group">
-                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                   <span aria-hidden="true">&times;</span>
-                               </button>
-                          </div>
-                          <div class="modal-body form-group">
-                               <label>
-                                   <input type="text" name="new_item">
-                               </label>
-                          </div>
-                          <div class="modal-footer form-group">
-                               <button type="submit" class="btn btn-primary" href="">Save changes</button>
-                          </div>
-                     </form>
-                </div>
-           </div>
-       </div>
-     <!--Edit item modal-->
   </div>
 {% endblock %}
 </body>
