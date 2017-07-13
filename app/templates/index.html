@@ -30,7 +30,7 @@
 <!--Heading-->
     <div class="row jumbotron text-center">
         <h2 id="heading" class="pull-left">Welcome, {{ username }}</h2>
-        <a type="button" class="btn btn-primary btn-lg pull-right" href="/additems">Add bucketlist</a>
+        <a type="button" class="btn btn-primary btn-lg pull-right" href="{{ url_for('addtitle') }}">Add bucketlist</a>
     </div>
 <!--End Heading-->
 {% block body %}
