@@ -55,9 +55,10 @@ def addtitle():
     if request.method == 'POST':
         title = request.form['title']
         if bucketlist.addtitle(title):
-            return redirect(url_for('additems', form=form, title=title))
+            return redirect(url_for('additems', title=title))
         error = 'Bucketlist with title already exists'
         return redirect(url_for('addtitle', form=form, error=error))
+    return render_template('Add-title.html')
 
 
 @app.route('/additems', methods=['GET'])
