@@ -29,15 +29,25 @@
                        <a href="{{ url_for('deleteitem') }}"><i class="glyphicon glyphicon-trash pull-right"></i></a>
                    {% endfor %}
 
-                   <form action="{{ url_for('additems') }}" class="form-group" method="post">
+                   <form action="{{ url_for('saveitem', title=title) }}" class="form-group" method="post">
                        <ul class="list-group">
                            <li class="list-group-item">
-                               <label>
-                                   <input type="checkbox" class="pull-left">
-                               </label>
-                               <label>
-                                   <input type="text" class="form-control" placeholder="Item" name="item" required><br>
-                               </label>
+                               <div class="form-group">
+                                   <label>
+                                       <input type="checkbox" class="pull-left">
+                                   </label>
+                                   <label>
+                                       <input type="text" class="form-control" placeholder="Item" name="item" required><br>
+                                   </label>
+                               </div>
+                               {% if error %}
+                                   {{ error }}
+                               {% elif error1 %}
+                                   {{ error1 }}
+                                   {% endif %}
+                               <div class="form-group">
+                                   <a type="button" class="btn btn-primary text-center">Save item</a>
+                               </div>
                            </li>
                        </ul>
                    </form>
@@ -45,7 +55,7 @@
 
            </div>
            <div class="panel-footer">
-               <a type="button" class="btn btn-primary text-center" href="{{ url_for('additem', title=title) }}">Add item</a>
+               <a type="button" class="btn btn-primary text-center" href="{{ url_for('saveitem', title=title) }}">Add item</a>
            </div>
            </div>
       </div>
