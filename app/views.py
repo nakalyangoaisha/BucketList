@@ -51,14 +51,13 @@ def index(username):
 
 @app.route('/addtitle', methods=['POST', 'GET'])
 def addtitle():
-    error = None
     form = request.form
     if request.method == 'POST':
         title = request.form['title']
         if bucketlist.addtitle(title):
             return redirect(url_for('additems', form=form, title=title))
         error = 'Bucketlist with title already exists'
-    return redirect(url_for('addtitle', form=form, error=error))
+        return redirect(url_for('addtitle', form=form, error=error))
 
 
 @app.route('/additems', methods=['GET'])
