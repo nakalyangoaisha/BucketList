@@ -51,23 +51,30 @@ def index(username):
 
 @app.route('/addtitle', methods=['POST', 'GET'])
 def addtitle():
+    error = None
     form = request.form
     if request.method == 'POST':
         title = request.form['title']
-        bucketlist.addtitle(title)
-        return redirect(url_for('additems', form=form, title=title))
-    return redirect(url_for('addtitle'))
-
-
-@app.route('/additems/<title>', methods=['GET', 'POST'])
-def additems(title):
-    form = request.form
-    if request.method == 'POST':
-        item = request.form['item']
-        if title:
-            bucketlist.additems(title, item)
+        if bucketlist.addtitle(title):
             return redirect(url_for('additems', form=form, title=title))
-    return redirect(url_for('additems', form=form))
+        error = 'Bucketlist with title already exists'
+    return redirect(url_for('addtitle', form=form, error=error))
+
+
+@app.route('/additems', methods=['GET'])
+def additems():
+    return render_template('Add-items.html')
+
+
+@app.route('/saveitem/<title>', methods=['POST', 'GET'])
+def saveitem(title):
+    form = request.form
+    item = request.form['item']
+    if request.method == 'POST':
+        if bucketlist.saveitem(title, item) and item is not None:
+            redirect(url_for('additems', title=title))
+        error = 'Item already in list'
+        return redirect(url_for('saveitem', form=form, error=error))
 
 
 @app.route('/edit_title/<title>', methods=['GET', 'POST'])
