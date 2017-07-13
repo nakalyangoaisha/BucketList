@@ -9,6 +9,13 @@ class BucketList(object):
 
     bucketlists = {}
 
+    def addtitle(self, title):
+        if title in self.bucketlists.keys():
+            return False
+        else:
+            self.bucketlists.update({title: []})
+            return True
+
     def additems(self, title, item):
         if title in self.bucketlists.keys():
             self.bucketlists.update({title: item})
@@ -21,8 +28,8 @@ class BucketList(object):
             return True
         return False
 
-    # def edit_items(self, item, new_item):
-    #         item_index = self.bucketlists.
+    def edit_items(self, item, new_item):
+        pass
 
     def deletelist(self, title):
         if title in self.bucketlists.keys():
