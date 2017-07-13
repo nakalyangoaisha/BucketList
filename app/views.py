@@ -56,7 +56,7 @@ def addtitle():
         title = request.form['title']
         bucketlist.addtitle(title)
         return redirect(url_for('additems', form=form, title=title))
-    return render_template('Add-bucketlist.html', form=form)
+    return redirect(url_for('addtitle'))
 
 
 @app.route('/additems/<title>', methods=['GET', 'POST'])
@@ -67,7 +67,7 @@ def additems(title):
         if title:
             bucketlist.additems(title, item)
             return redirect(url_for('additems', form=form, title=title))
-    return render_template('Add-item.html', form=form)
+    return redirect(url_for('additems', form=form))
 
 
 @app.route('/edit_title/<title>', methods=['GET', 'POST'])
