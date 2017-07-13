@@ -39,4 +39,3 @@ class BucketList(object):
 
     def deleteitem(self, title, item):
         pass
-
