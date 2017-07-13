@@ -49,47 +49,44 @@ def index(username):
     return render_template('index.html', username=username)
 
 
-# @app.route('/addbucketlist', methods=['POST', 'GET'])
-# def addbucketlist():
-#     form = request.form
-#     if request.method == 'POST':
-#         title = request.form['title']
-#         bucketlist.add_bucketlist(title)
-#         return redirect(url_for('additem', form=form, title=title))
-#     return render_template('Add-bucketlist.html', form=form)
-
-
-@app.route('/additems', methods=['GET', 'POST'])
-def additems():
+@app.route('/addtitle', methods=['POST', 'GET'])
+def addtitle():
     form = request.form
-    error = None
     if request.method == 'POST':
         title = request.form['title']
+        bucketlist.addtitle(title)
+        return redirect(url_for('additems', form=form, title=title))
+    return render_template('Add-bucketlist.html', form=form)
+
+
+@app.route('/additems/<title>', methods=['GET', 'POST'])
+def additems(title):
+    form = request.form
+    if request.method == 'POST':
         item = request.form['item']
         if title:
             bucketlist.additems(title, item)
             return redirect(url_for('additems', form=form, title=title))
-        error = 'Add title first'
-    return render_template('Add-item.html', form=form, error=error)
+    return render_template('Add-item.html', form=form)
 
 
-@app.route('/edittitle/<title>', methods=['GET', 'POST'])
+@app.route('/edit_title/<title>', methods=['GET', 'POST'])
 def edit_title(title):
     form = request.form
     if request.method == 'POST':
         new_title = form['new_title']
         bucketlist.edittitle(title, new_title)
         return redirect(url_for('additems'))
-    return redirect(url_for('additems'))
+    return redirect(url_for('additems', new_title=title))
 
 
-# @app.route('/edititem/<item>', methods=['GET', 'POST'])
-# def edit_item(item):
-#     form = request.form
-#     if request.method == 'POST':
-#         new_item = form['new_item']
-#         bucketlist.edit_items(item, new_item)
-#         return redirect(url_for('additem'))
+@app.route('/edititem/<item>', methods=['GET', 'POST'])
+def edit_item(item):
+    form = request.form
+    if request.method == 'POST':
+        new_item = form['new_item']
+        bucketlist.edit_items(item, new_item)
+        return redirect(url_for('additem'))
 
 
 @app.route('/deletelist/<title>', methods=['POST'])
