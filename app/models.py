@@ -16,9 +16,9 @@ class BucketList(object):
             self.bucketlists.update({title: []})
             return True
 
-    def additems(self, title, item):
-        if title in self.bucketlists.keys():
-            self.bucketlists.update({title: item})
+    def saveitem(self, title, item):
+        if title in self.bucketlists.keys() and item not in self.bucketlists[title]:
+            self.bucketlists[title].append(item)
             return True
         return False
 
