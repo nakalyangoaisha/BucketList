@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends "index.html" %}
+    <meta charset="UTF-8">
+    <title>{% block title %}Edit Item{%endblock%}</title>
+    {% block body%}
+</head>
+<body>
+<div class="container">
+        <!--Edit item-->
+            <div class="panel-default">
+                 <form action="{{ url_for('edit_item') }}" class="form-control" method="post">
+                      <div class="panel-heading form-group">
+                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                               <span aria-hidden="true">&times;</span>
+                           </button>
+                      </div>
+                      <div class="panel-body form-group">
+                           <label>
+                               <input type="text" class="form-control" placeholder="Edit Item" name="newitem" required>
+                           </label>
+                      </div>
+                      <div class="panel-footer form-group">
+                           <button type="submit" class="btn btn-primary" href="">Save changes</button>
+                      </div>
+                 </form>
+            </div>
+     <!--End Edit item-->
+    {% endblock %}
+    </div>
+</body>
+</html>
