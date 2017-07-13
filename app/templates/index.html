@@ -27,22 +27,30 @@
 <!--End Navbar-->
 
 <div class="container">
-
-<!--Bucketlists page-->
-    <div class="page-header">
-        <h1 id="heading" class="text-center">Welcome, {{ username }}</h1>
+<!--Heading-->
+    <div class="row jumbotron text-center">
+        <h2 id="heading" class="pull-left">Welcome, {{ username }}</h2>
+        <a type="button" class="btn btn-primary btn-lg pull-right" href="{{ url_for('addtitle') }}">Add bucketlist</a>
     </div>
-
-    <div class="">
-        <a type="button" class="btn btn-primary btn-lg text-center" href="/additems">Add bucketlist</a>
-    </div>
-    <div class="list-group">
-         {% if bucketlist %}
-             <a class="" href="/additems" >{{ bucketlist.title }}</a>
-            {% endif %}
-    </div>
-<!--End Bucketlists page-->
+<!--End Heading-->
 {% block body %}
+<!--Bucketlists display-->
+        <div class="panel panel-default">
+        {% if bucketlists %}
+            {% for item in bucketlist() %}
+                <div class="panel-heading">
+                    {{ item.key }}
+                </div>
+                <div class="panel-body">
+
+                <div class="list-group">
+                     <a class="" href="/additems" >{{ item.values }}</a>
+                </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+        </div>
+<!--End Bucketlists display-->
 {% endblock %}
 </div>
 <script src="http://code.jquery.com/jquery.js"></script>

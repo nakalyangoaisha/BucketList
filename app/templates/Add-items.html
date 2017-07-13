@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends "index.html" %}
+    <meta charset="UTF-8">
+    <title>{% block title %}Add Item{%endblock%}</title>
+    {% block body%}
+    <link href="../static/css/Add-items.css" rel="stylesheet" media="screen">
+</head>
+<body>
+  <div class="container">
+      <!--Add bucketlist items panel-->
+       <div class="panel panel-default">
+           <div class="row panel-heading">
+               <div class="col-sm-6">
+                   {% if title %}
+                        {{ title }}
+                   {% endif %}
+                   <div class="col-sm-6">
+                       <a href="{{ url_for('edit_title', title=title) }}"><i class="glyphicon glyphicon-pencil pull-right"></i></a>
+                       <a href="{{ url_for('deletelist', title=title) }}"><i class="glyphicon glyphicon-trash pull-right"></i></a>
+                   </div>
+               </div>
+           </div>
+
+           <div class="panel-body">
+               {% if title in bucketlist %}
+                   {% for item in bucketlist.bucketlists.values() %}
+                       {{ item }}
+                       <a href="{{ url_for('edit_item') }}"><i class="glyphicon glyphicon-pencil pull-right"></i></a>
+                       <a href="{{ url_for('deleteitem') }}"><i class="glyphicon glyphicon-trash pull-right"></i></a>
+                   {% endfor %}
+
+                   <form action="{{ url_for('saveitem', title=title) }}" class="form-group" method="post">
+                       <ul class="list-group">
+                           <li class="list-group-item">
+                               <div class="form-group">
+                                   <label>
+                                       <input type="checkbox" class="pull-left">
+                                   </label>
+                                   <label>
+                                       <input type="text" class="form-control" placeholder="Item" name="item" required><br>
+                                   </label>
+                               </div>
+                               {% if error %}
+                                   {{ error }}
+                               {% elif error1 %}
+                                   {{ error1 }}
+                                   {% endif %}
+                               <div class="form-group">
+                                   <a type="button" class="btn btn-primary text-center">Save item</a>
+                               </div>
+                           </li>
+                       </ul>
+                   </form>
+               {% endif %}
+
+           </div>
+           <div class="panel-footer">
+               <a type="button" class="btn btn-primary text-center" href="{{ url_for('saveitem', title=title) }}">Add item</a>
+           </div>
+           </div>
+      </div>
+  <!--Add bucketlist items panel-->
+  </div>
+{% endblock %}
+</body>
+</html>
