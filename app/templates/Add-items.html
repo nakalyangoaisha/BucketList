@@ -5,25 +5,27 @@
     <meta charset="UTF-8">
     <title>{% block title %}Add Item{%endblock%}</title>
     {% block body%}
-    <link href="../static/css/Add-item.css" rel="stylesheet" media="screen">
+    <link href="../static/css/Add-items.css" rel="stylesheet" media="screen">
 </head>
 <body>
   <div class="container">
       <!--Add bucketlist items panel-->
        <div class="panel panel-default">
            <div class="row panel-heading">
-               <div class="col-sm-8 form-group">
+               <div class="col-sm-6">
                    {% if title %}
                         {{ title }}
+                   {% endif %}
+                   <div class="col-sm-6">
                        <a href="{{ url_for('edit_title', title=title) }}"><i class="glyphicon glyphicon-pencil pull-right"></i></a>
                        <a href="{{ url_for('deletelist', title=title) }}"><i class="glyphicon glyphicon-trash pull-right"></i></a>
-                   {% endif %}
+                   </div>
                </div>
            </div>
 
            <div class="panel-body">
-               {% if title in bucketlists.keys() %}
-                   {% for item in bucketlists.values() %}
+               {% if title in bucketlist %}
+                   {% for item in bucketlist.bucketlists.values() %}
                        {{ item }}
                        <a href="{{ url_for('edit_item') }}"><i class="glyphicon glyphicon-pencil pull-right"></i></a>
                        <a href="{{ url_for('deleteitem') }}"><i class="glyphicon glyphicon-trash pull-right"></i></a>

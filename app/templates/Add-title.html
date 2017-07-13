@@ -9,15 +9,18 @@
 </head>
 <body>
 <div class="container">
-    <form action="{{ url_for('additems') }}">
+    <form action="{{ url_for('addtitle') }}" method="post">
            <div class="form-group">
                <input type="text" class="form-control" placeholder="Title" name="title" required>
                {% if error %}
                  {{ error }}
                {% endif %}
-               <a type="button" class="btn btn-primary text-center">Save</a>
+           </div>
+           <div class="form-group">
+               <button type="submit" class="btn btn-primary">Save</button>
            </div>
     </form>
 </div>
+{% endblock %}
 </body>
 </html>
