@@ -30,5 +30,6 @@ class BucketList(object):
             return True
         return False
 
-
+    def deleteitem(self, title, item):
+        pass
 
