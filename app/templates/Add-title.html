@@ -5,13 +5,16 @@
     <meta charset="UTF-8">
     <title>{% block title %}Add Title{%endblock%}</title>
     {% block body%}
-    <link href="../static/css/Add-item.css" rel="stylesheet" media="screen">
+    <link href="../static/css/Add-items.css" rel="stylesheet" media="screen">
 </head>
 <body>
 <div class="container">
-    <form action="{{ url_for('add_item') }}">
+    <form action="{{ url_for('additems') }}">
            <div class="form-group">
                <input type="text" class="form-control" placeholder="Title" name="title" required>
+               {% if error %}
+                 {{ error }}
+               {% endif %}
                <a type="button" class="btn btn-primary text-center">Save</a>
            </div>
     </form>
